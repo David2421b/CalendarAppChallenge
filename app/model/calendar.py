@@ -61,7 +61,11 @@ class Day:
             for minute in range(0, 60 ,15):
                 self.slots[time(hour, minute)] = None
 
-
-
+    def add_event(self, event_id: str, start_at: time, end_at: time):
+        for slot_time in self.slots:
+            if start_at <= slot_time < end_at:
+                if self.slots[slot_time] is not None:
+                    slot_not_available_error()
+                self.slots[slot_time] = event_id
 
 # TODO: Implement Calendar class here
