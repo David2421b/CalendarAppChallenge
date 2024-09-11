@@ -68,4 +68,31 @@ class Day:
                     slot_not_available_error()
                 self.slots[slot_time] = event_id
 
+    def delete_event(self, event_id: str):
+        deleted = False
+        for slot, saved_id in self.slots.items():
+            if saved_id == event_id:
+                self.slots[slot] = None
+                deleted = True
+        if not deleted:
+            event_not_found_error()
+
+    def update_event(self, event_id: str, start_at: time, end_at: time):
+        for slot in self.slots:
+            if self.slots[slot] == event_id:
+                self.slots[slot] = None
+
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                if self.slots[slot]:
+                    slot_not_available_error()
+                else:
+                    self.slots[slot] = event_id
 # TODO: Implement Calendar class here
+
+class Calendar:
+
+    def __init__(self):
+        self.days: dict[date, Day]
+        self.events: dict[str, Event] = {}
+
