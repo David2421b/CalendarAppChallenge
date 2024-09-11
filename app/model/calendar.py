@@ -93,10 +93,23 @@ class Day:
 class Calendar:
 
     def __init__(self):
-        self.days: dict[date, Day]
+        self.days: dict[date, Day] = {}
         self.events: dict[str, Event] = {}
+        self.today = None
 
     def add_event(self, title: str, description: str, date_: date, start_at: time, end_at: time):
-        pass
+        self.today = datetime.now().date()
+        if date_ < self.today:
+            date_lower_than_today_error()
+
+        if date_ not in self.days:
+            self.days[date_] = Day(date_)
+
+
+
+
+
+
+
 
 
