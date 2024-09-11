@@ -96,3 +96,7 @@ class Calendar:
         self.days: dict[date, Day]
         self.events: dict[str, Event] = {}
 
+    def add_event(self, title: str, description: str, date_: date, start_at: time, end_at: time):
+        pass
+
+
