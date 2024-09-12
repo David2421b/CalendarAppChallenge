@@ -36,13 +36,12 @@ class Event:
         self.reminders.append(new_object)
 
     def delete_reminder(self, reminder_index: int):
-        for e in self.reminders:
-            if e in self.reminders:
-                self.reminders.remove(e)
-            else:
-                reminder_not_found_error()
+        if 0 <= reminder_index < len(self.reminders):
+            self.reminders.pop(reminder_index)
+        else:
+            reminder_not_found_error()
 
-    def _str_(self) -> str:
+    def _str_(self):
         return (f"ID: {self.id}\n"
                 f"Event title: {self.title}\n"
                 f"Description: {self.description}\n"
