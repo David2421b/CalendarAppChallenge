@@ -103,7 +103,19 @@ class Calendar:
             date_lower_than_today_error()
 
         if date_ not in self.days:
-            self.days[date_] = Day(date_)
+            other_object_day = Day(date_)
+            self.days[date_] = other_object_day
+
+        other_object_event = Event(title, description, date_, start_at, end_at)
+        Day.add_event(other_object_event) #revisar esto
+        self.events[Event.id] = other_object_event
+        return Event.id
+
+
+
+
+
+
 
 
 
